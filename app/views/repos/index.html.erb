@@ -1,0 +1,19 @@
+<table>
+  <thead>
+    <tr>
+      <td>Repo Name</td>
+      <td>Last Updated</td>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <% @fetcher.client.repos.each do |repo| %>
+      <td> <%= link_to repo.name, "#{repo.html_url}" %></td>
+      <td> <%= repo.updated_at %></td>
+      <td> <%= @fetcher.commit_count("#{repo.owner.login}/#{repo.name}", "2015-03-11") %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

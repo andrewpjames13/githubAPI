@@ -1,7 +1,7 @@
 class ReposController < ApplicationController
 
   def index
-    @client = GithubFetcher.new
+    @fetcher = GithubFetcher.new
   end
 
 end

@@ -1,1 +1,43 @@
-<%= link_to @fetcher.user.name, repos_path %>
+<%= image_tag @fetcher.user.avatar_url %>
+<br>
+<h1><%= link_to @fetcher.user.name, repos_path %></h1>
+<br>
+<h1><%= @fetcher.user.location %></h1>
+
+<br>
+<%= form_tag '/', method: :get %>
+  <%= label_tag "GitHub User Name" %>
+  <%= text_field_tag(:login) %>
+  <%= submit_tag 'Get info' %>
+<br>
+
+<% if @gituser %>
+<br><%= image_tag @gituser.avatar_url %></br>
+<br><%= @gituser.name %></br>
+<br><%= @gituser.location %></br>
+<br><%= @gituser.email %></br>
+<br><%= @gituser.company %></br>
+<br><%= @gituser.created_at %></br>
+
+<table>
+  <thead>
+    <tr>
+      <td>Repo Name</td>
+      <td>Last Updated</td>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <% @gitrepo.each do |repo| %>
+      <td> <%= link_to repo.name, "#{repo.html_url}" %></td>
+      <td> <%= repo.updated_at %></td>
+
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<% end %>
