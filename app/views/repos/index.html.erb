@@ -17,3 +17,18 @@
     <% end %>
   </tbody>
 </table>
+
+
+<table>
+
+<tbody>
+<tr>
+<% @fetcher.client.repos.each do |repo| %>
+  <td> <%= link_to repo.name, "#{repo.html_url}" %></td>
+    <% @fetcher.day_count.each do |day| %>
+      <td> <%= day %></td>
+</tr>
+    <% end %>
+<% end %>
+</tbody>
+</table>
